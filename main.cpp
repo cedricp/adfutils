@@ -277,6 +277,9 @@ public:
         stop_explorer_thread();
 
         m_adfwriter.closeDevice();
+        if (m_serialports.size() == 0){
+            return;
+        }
         if (m_adfwriter.openDevice(m_serialports[m_selectedserial].portName)){
             ArduinoFloppyReader::FirmwareVersion fwversion = m_adfwriter.getFirwareVersion();
             m_serialportok = true;
